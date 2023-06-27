@@ -177,11 +177,11 @@
 /* ----글쓰기버튼---- */
 .writeButton{
     z-index: 100;
-    position: absolute;
+    position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
-    bottom: 20px;
+    bottom: 70px;
     right: 10px;
     width: 50px;
     height: 50px;

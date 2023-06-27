@@ -20,7 +20,7 @@
             <div class="mainForm">
                 <section class="joinForm">
                     <input type="text" id="is_secret" name="is_secret" value="0" style="display: none;">
-                    <input type="text" name="title" class="titleForm" value="{{ post.title }}">
+                    <input type="text" name="title" class="titleForm" value="{{ post.title }}" maxlength="24">
                     <textarea type="text" name="content" class="textForm">{{post.content}}</textarea>
                     <section class="textFormInnerBtn">
                         <button type="button" onclick="chooseImage()"><i class="far fa-image"></i></button><br>

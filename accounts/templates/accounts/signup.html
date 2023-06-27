@@ -83,6 +83,12 @@
                 </div>
                 <span class="errorMsg" id="idError"></span>
             </section>
+
+            {% if messages %}
+            {% for message in messages %}
+                <div id="pwConfirmError">{{ message }}</div>
+            {% endfor %}
+            {% endif %}
             
 
             <section class="inputAndAlert">
@@ -110,6 +116,7 @@
             </div>
         </div>
     </section>
+
     <input class="signupBtn" type="submit" value="회원가입" style="color:white" onclick="validateForm() ">
     <!-- <button class="signupBtn" type='submit' value="회원가입" style="color:white">회원가입</button> -->
 </form>

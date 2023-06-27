@@ -64,7 +64,7 @@ def signup(request):
             return redirect('accounts:signup')
 
         if User.objects.filter(Q(username=request.POST['username']) | Q(email=request.POST['email'])).exists():
-            # messages.error(request, '이미 사용 중인 ID 또는 이메일입니다.')
+            messages.error(request, '이미 사용 중인 ID 또는 이메일입니다.')
             return redirect('accounts:signup')
 
         try:
