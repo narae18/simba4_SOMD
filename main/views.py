@@ -728,3 +728,21 @@ def page_list(request, posts_list, num_per_page):
     #     right_index = paginator.num_pages   
     # custom_range = range(left_index, right_index+1) # 페이지 범위 설정
     return page_obj
+
+
+def search(request):
+    if request.method('POST'):
+        searched = request.POST['searched'] 
+        somd_name = somd_name.object.filter(somds__contains=searched)
+        return render(request, 'searched.html', {'searched': searched, 'recipes': recipes})
+
+
+
+
+# def search(request):
+#         if request.method == 'POST':
+#                 searched = request.POST['searched']        
+#                 recipes = Recipe.objects.filter(name__contains=searched)
+#                 return render(request, 'searched.html', {'searched': searched, 'recipes': recipes})
+#         else:
+#                 return render(request, 'searched.html', {})

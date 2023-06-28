@@ -24,6 +24,17 @@
         <div class="list">
             <div class="somd_list">
 
+
+
+
+            <form class="d-flex" method="POST" action="{% url 'search' %}">
+            {% csrf_token %}        
+            <input class="form-control me-2" type="search" placeholder="Search" name="searched" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit"> Search </button>
+        </form>
+
+
+
                 <div class="somd_list_for_scroll">
                     {% for somd in rank_somds %}
                     <a class="somd icon_box" href="{% url 'main:somdFeed' somd.id %}">

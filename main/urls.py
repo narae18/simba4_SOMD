@@ -1,5 +1,6 @@
 from django.urls import path
 from .views import *
+from .views import search
 
 app_name = "main"
 urlpatterns = [
@@ -42,4 +43,6 @@ urlpatterns = [
     path('somd_members_delete/<int:somd_id>/<int:join_user_id>/',somd_members_delete,name="somd_members_delete"),
     
     path('alram/',alram,name="alram"),
+
+     path('',views.search,name='search'),
 ]
