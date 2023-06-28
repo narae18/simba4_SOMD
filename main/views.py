@@ -23,12 +23,18 @@ def mainPage(request):
         members = Member.objects.filter(user=user)
         somds = SOMD.objects.filter(members__in=members)
 
+        alrams, created = UserAlram.objects.get_or_create(user=user)
+
+    
+
         posts = Post.objects.filter(somd__in =somds)
         if somds:
             posts = posts.order_by('-pub_date')
             return render(request, 'main/mainPage.html', {
                 'somds': somds,
                 'posts' : posts,
+
+                'alrams':alrams,
                 
             })
     return render(request, 'main/mainPage.html')
@@ -218,19 +224,18 @@ def mySomd(request):
         return redirect('accounts:needTologin')
     
     user = request.user
-    try:
-        member = Member.objects.get(user=user)
-    except Member.DoesNotExist:
-        return render(request, "main/mySomd.html")
-        
-    member = Member.objects.get(user=user)
+    alrams, created = UserAlram.objects.get_or_create(user=user)
+
+    member, created = Member.objects.get_or_create(user=user)
+
     somds = member.somds.all()
     # tags = Tag.objects.all()
-
+    
     waiting_somds = member.waiting_somds.all()
     return render(request, "main/mySomd.html", {
         'somds': somds,
         'waiting_somds':waiting_somds,
+        'alrams':alrams,
         # 'tags':tags,
     })
     
@@ -317,6 +322,9 @@ def wantTojoin(request, id):
 
     #유저에게 알람 전달
     receiveUser, created = UserAlram.objects.get_or_create(user=somd.admin)
+
+    receiveUser.new = True
+    receiveUser.save()
     
     alram = Alram()
     alram.type ="userJoin"
@@ -374,6 +382,9 @@ def somd_members_wantTojoin(request, somd_id, request_id):
 
             receiveUser, created = UserAlram.objects.get_or_create(user=joinrequest.writer)
             
+            receiveUser.new = True
+            receiveUser.save()
+            
             alram = Alram()
             alram.type ="somdAccept"
             alram.sendUser = (request.user)
@@ -390,6 +401,9 @@ def somd_members_wantTojoin(request, somd_id, request_id):
 
             #유저에게 알람 전달
             receiveUser, created = UserAlram.objects.get_or_create(user=joinrequest.writer)
+
+            receiveUser.new = True
+            receiveUser.save()
             
             alram = Alram()
             alram.type ="somdReject"
@@ -429,6 +443,9 @@ def somd_members_delete(request, somd_id, join_user_id):
 
             #유저에게 알람 전달
             receiveUser, created = UserAlram.objects.get_or_create(user=join_user)
+
+            receiveUser.new = True
+            receiveUser.save()
                 
             alram = Alram()
             alram.type ="userDelete"
@@ -601,6 +618,9 @@ def alram(request):
         return redirect('accounts:needTologin')
     
     alrams, created = UserAlram.objects.get_or_create(user=request.user)
+    alrams.new = False
+    alrams.save()
+
     return render(request, "main/alram.html", {
         'alrams': alrams,
     })

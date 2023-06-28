@@ -9,9 +9,9 @@
 
 <section class="header">
     <section class="mainTitle">
-        <a href="{% url 'main:somdFeed' post.somd.id %}"><i class="fa-solid fa-chevron-left"></i></a>
+        <i class="fa-solid fa-chevron-left" onclick = gotoBack()></i>
         <!-- <i class="fa-solid fa-house"></i> -->
-        <div>{{ somd.name }}</div>
+        <div></div>
     </section>
 </section>
 <section class="EmptyForHeader"></section>
@@ -250,4 +250,17 @@ function post_view_menu_open(event){
     }
 </script>
 
+<script>
+    let beforeLink = document.referrer
+    function gotoBack(){
+        console.log(beforeLink);
+        if(beforeLink.includes("scrap") || beforeLink.includes("mainPage")|| beforeLink.includes("somdFeed") ){
+            location.href = beforeLink;
+        }
+        else{
+            location.href = '{% url 'main:somdFeed' post.somd.id %}';
+        }
+    }
+    </script>
+    
 {% endblock %}

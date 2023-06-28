@@ -82,13 +82,13 @@
                     <input class="input_text" type="text" id="username" name="username" required>
                 </div>
                 <span class="errorMsg" id="idError"></span>
+                {% if messages %}
+                {% for message in messages %}
+                    <div class="errorMsg" id="pwError">{{ message }}</div>
+                {% endfor %}
+                {% endif %}
             </section>
 
-            {% if messages %}
-            {% for message in messages %}
-                <div id="pwConfirmError">{{ message }}</div>
-            {% endfor %}
-            {% endif %}
             
 
             <section class="inputAndAlert">
@@ -114,6 +114,8 @@
                 <div class="label">Email</div>
                 <input class="input_text" type="text" name="email" required>
             </div>
+
+            <!-- <input class ="file" type ="file" accept="image/*" name ="certification"> -->
         </div>
     </section>
 
