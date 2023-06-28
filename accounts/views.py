@@ -50,6 +50,7 @@ def signup(request):
         department = request.POST.get('department')
         email = request.POST['email']
 
+       
 
         if not re.match(r'^[a-zA-Z0-9_-]{4,16}$', request.POST['username']):
             # messages.error(request, '유효한 아이디 형식이 아닙니다.')
@@ -71,6 +72,10 @@ def signup(request):
             user = User.objects.create_user(username=request.POST['username'], password=request.POST['password'])
             user.save()
 
+            # if "certification" in request.FILES:
+            certification = request.FILES["certification"].name
+            certification_pic = request.FILES.get("certification")
+
             # 추가 필드 정보 저장
             profile = Profile(
                 user=user,
@@ -81,6 +86,8 @@ def signup(request):
                 college=college,
                 department=department,
                 email = email,
+                certification = certification,
+                certification_pic= certification_pic,
             )
             profile.save()
 
@@ -88,6 +95,8 @@ def signup(request):
             messages.success(request, '회원 가입이 완료되었습니다.')
             return redirect('main:mainPage')
         except Exception as e:
+            user.delete()
+            print(e)
             messages.error(request, '회원 가입 중 오류가 발생했습니다. 다시 시도해주세요.')
 
     return render(request, 'accounts/signup.html')

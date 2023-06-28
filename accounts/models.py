@@ -26,6 +26,8 @@ class Profile(models.Model):
     #없앨거에요?
     nickname = models.CharField(max_length=10)
     
+    certification = models.CharField(max_length=64, null=True)
+    certification_pic = models.ImageField(upload_to=get_file_path_user,null=True)
 
     def __str__(self):
         return self.user.username
