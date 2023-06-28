@@ -86,7 +86,6 @@ def signup(request):
             profile.save()
 
             auth.login(request, user)
-            messages.success(request, '회원 가입이 완료되었습니다.')
             return redirect('main:mainPage')
         except Exception as e:
             user.delete()
