@@ -49,8 +49,7 @@ def signup(request):
         college = request.POST['college']
         department = request.POST.get('department')
         email = request.POST['email']
-
-       
+        certification_pic = request.FILES.get("certification")
 
         if not re.match(r'^[a-zA-Z0-9_-]{4,16}$', request.POST['username']):
             # messages.error(request, '유효한 아이디 형식이 아닙니다.')
@@ -72,10 +71,6 @@ def signup(request):
             user = User.objects.create_user(username=request.POST['username'], password=request.POST['password'])
             user.save()
 
-            # if "certification" in request.FILES:
-            certification = request.FILES["certification"].name
-            certification_pic = request.FILES.get("certification")
-
             # 추가 필드 정보 저장
             profile = Profile(
                 user=user,
@@ -86,7 +81,6 @@ def signup(request):
                 college=college,
                 department=department,
                 email = email,
-                certification = certification,
                 certification_pic= certification_pic,
             )
             profile.save()
