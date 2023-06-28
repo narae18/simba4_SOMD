@@ -734,9 +734,10 @@ def search(request):
     if request.method('POST'):
         searched = request.POST['searched'] 
         somd_name = somd_name.object.filter(somds__contains=searched)
-        return render(request, 'searched.html', {'searched': searched, 'recipes': recipes})
+        return render(request, 'searched.html', {'searched': searched, 'somds': somds})
 
-
+    else:
+        return render(request, 'searched.html',{})
 
 
 # def search(request):
