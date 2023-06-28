@@ -49,7 +49,7 @@ def signup(request):
         college = request.POST['college']
         department = request.POST.get('department')
         email = request.POST['email']
-        certification_pic = request.FILES.get("certification")
+        certification_pic = request.FILES["certification"]  
 
         if not re.match(r'^[a-zA-Z0-9_-]{4,16}$', request.POST['username']):
             # messages.error(request, '유효한 아이디 형식이 아닙니다.')
