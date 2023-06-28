@@ -22,7 +22,7 @@
     <section class="titleSection">
         {% if messages %}
             {% for message in messages %}
-                <div class="alert alert-{{ message.tags }}">
+                <div class="alert alert-{{ message.tags }}" id="alcls">
                     {{ message }}
                 </div>
             {% endfor %}
