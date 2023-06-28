@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% if searched %}
+        <h1> 당신이 찾던, " {{ searched }} " 에 대한 결과 입니다. </h1>
+
+        <br>
+
+        {% for Post in Posts %}
+                {{ post.title }} <br>
+                {{ post.writer }} <br>
+                {{ post.pub_date}} <br>
+                {{ post.content }} <br>
+        {% endfor %}
+    {% else %}
+                <h1> 찾고있는 소모임 이름을 입력해주세요! </h1>
+    {% endif %}
+
+
+    
+{% comment %} {% extends 'base.html' %}
+
+{% block content %}
+        {% if searched %}        # 만약, 검색창에 입력한 값이 있다면 이라는 의미입니다.
+                <h1> 검색하신 {{ searched }} 레시피 정보입니다. </h1>
+                <br>
+                {% for recipe in recipes %}        # 검색 결과가 여러 개일 수 있기 때문에 반복문을 사용했습니다. 
+                        {{ recipe.name }} <br>
+                        {{ recipe.country }} <br>
+                        {{ recipe.ingredient }} <br>
+                {% endfor %}
+        {% else %}        # 검색창에 아무것도 입력하지 않았을 경우 뜨는 메시지입니다.
+                <h1> 찾고 있는 레시피를 검색창에 입력해주세요. </h1>
+        {% endif %}
+{% endblock %} {% endcomment %}

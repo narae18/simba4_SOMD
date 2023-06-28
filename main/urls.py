@@ -44,5 +44,5 @@ urlpatterns = [
     
     path('alram/',alram,name="alram"),
 
-     path('',views.search,name='search'),
+     path('',search, name='search'),
 ]
