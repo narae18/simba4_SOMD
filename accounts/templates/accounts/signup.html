@@ -22,15 +22,11 @@
     <section class="titleSection">
         <h3 class="title">회원가입을 위해 개인정보 입력해주세요!</h3>
     </section>
-    {% if messages %}
-    {% for message in messages %}
-        <div style="color: red;">{{ message }}</div>
-    {% endfor %}
-    {% endif %}
+
     <section class="mainbody">
         <div class="mainCol">
             <div class="inputBlank">
-                <div class="label">이름</div>
+                <div class="label">ㅁㄴ온ㅇ</div>
                 <input class="input_text" type="text" name="name"  required>
             </div>
             <div class="inputBlank">
@@ -210,6 +206,7 @@ function validateForm() {
     var college = document.getElementById('college').value;
     var department = document.getElementById('department').value;
     var birthday = document.getElementById('birth').value;
+    var certification = document.getElementById('certification');
 
     var year = birthday.substring(0,4);
     var month = birthday.substring(4,6);
@@ -224,7 +221,11 @@ function validateForm() {
     if (!college||!department||!birthday){
         alert("정보를 모두 입력해주세요.");
         return false;
-    }
+    } else if (!certification || !certification.src) {
+        alert("Certification image not found.");
+        return false;
+        }
+    
     // 생년월일 확인
     if (!isBirthday(year, month, day)) {
         alert("생년월일이 올바르지 않습니다.");
