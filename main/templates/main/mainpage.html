@@ -12,7 +12,13 @@
         <div>
             메인페이지
         </div>
-
+        {%if user.is_authenticated %}
+        {% if alrams.new %}
+            <i class="fa-solid fa-bell" onclick="location.href = {% url 'main:alram' %}"></i>
+            {% else %} 
+            <i class="fa-solid fa-bell" style="color:lightgrey" onclick="location.href = {% url 'main:alram' %}"></i>
+            {% endif %}
+        {%endif%}
     </section>
 </section>
 <section class="EmptyForHeader"></section>
@@ -85,6 +91,17 @@
         </section>
     {%endif%}
 </section> 
+<section style="height:60px; flex-shrink: 0; border-radius: 10px; box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3); width: 100%; margin: 10px 0px; background-color: #0ecc87; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white;" onclick="window.open('https://forms.gle/z6ALninKHmvLVw5H7')">
+    <div style="display: flex; font-size: 15px;  justify-content: center; align-items: center;">
+        <i class="fa-solid fa-heart"></i>
+        <div style="margin: 0px 10px;">당신의 피드백을 기다리고 있어요!</div>
+        <i class="fa-solid fa-heart"></i>
+    </div>
+    <div style="font-size: 5px;">
+        <div style="margin-to: 10px;">클릭시 폼 링크로 이동합니다!</div>
+    </div>
+    <!-- <i class="fa-solid fa-chevron-right" style="padding-top: 3px;"></i> -->
+</section>
 
 
 <script src="{% static 'js/postContainer.js' %}"></script>

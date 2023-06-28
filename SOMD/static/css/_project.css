@@ -190,6 +190,14 @@ select:focus{
     outline: 0;
 }
 
+textarea:hover{
+    outline: 0;
+}
+
+textarea:focus{
+    outline: 0;
+}
+
 .warning:focus{
     color: grey;
 }

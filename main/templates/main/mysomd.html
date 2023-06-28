@@ -5,11 +5,15 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/mySomd.css' %}">
 <section class="header">
     <section class="mainTitle">
-        <i class="fa-solid fa-user-group"></i>
+        <i class="fa-solid fa-user"></i>
         <div>
             나의솜디
         </div>
+        {% if alrams.new %}
         <i class="fa-solid fa-bell" onclick="location.href = {% url 'main:alram' %}"></i>
+        {% else %} 
+        <i class="fa-solid fa-bell" style="color:lightgrey" onclick="location.href = {% url 'main:alram' %}"></i>
+        {% endif %}
     </section>
 </section>
 <section class="EmptyForHeader"></section>

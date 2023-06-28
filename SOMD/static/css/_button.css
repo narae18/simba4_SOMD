@@ -8,7 +8,24 @@
     right: 0px;
     display: flex; */
 }
+
 /* 기본 버튼 */
+.white_button{
+    background-color: white;
+    color: #0ECC87;
+
+}
+
+.green_button{
+    background-color: #0ECC87;
+    color: white;
+}
+
+.white_button:focus, .white_button:hover .white_button:active{
+    color: #0ECC87
+}
+
+
 .body_button{
     /* margin: 5px; */
     flex-grow: 1;
@@ -18,25 +35,13 @@
     padding: 10px;
     border-radius: 10px;
     border: #0ECC87 2px solid;
-    background-color: #0ECC87;
+}
+
+.green_button:focus, .green_button:hover, .green_button:active{
     color: white;
 }
 
-.body_button:focus, .body_button:hover, .body_button:active{
-    color: white;
-}
 
-
-/* 배경이 하얀색인 버튼 */
-.white_button{
-    background-color: white;
-    color: #0ECC87;
-
-}
-
-.white_button:focus, .white_button:hover .white_button:active{
-    color: #0ECC87
-}
 
 /* 버튼2개가 row일경우 */
 .button_case> .body_button2:nth-child(1){

@@ -6,9 +6,9 @@
 
 <section class="header">
     <section class="mainTitle">
-        <a href="{% url 'main:mainPage' %}"><i class="fa-solid fa-chevron-left"></i></a>
+        <i class="fa-solid fa-wrench"></i>
         <!-- <i class="fa-solid fa-house"></i> -->
-        <div>{{ somd.name }}</div>
+        <div>마이페이지</div>
          <a class="header_button" href="{% url 'users:myPage_edit' %}" class="button">
             <i class="fa-solid fa-pen"></i> 수정
         </a>
@@ -24,7 +24,7 @@
         </section>
         <section class="middle">
             <div class="fixinfo">{{ user.profile.email }}</div>
-            <div class="fixinfo">{{ user.profile.birth }} / {{ user.profile.gender }}</div>
+            <div class="fixinfo">{{ user.profile.birthday|date:'Y.m.d' }} / {{ user.profile.gender }}</div>
         </section>
 
         <section class="item">

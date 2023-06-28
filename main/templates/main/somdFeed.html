@@ -10,7 +10,7 @@
     <section class="mainTitle">
 
     
-        <sapn onclick="gotoBack()"><i class="fa-solid fa-chevron-left"></i></sapn>
+        <i class="fa-solid fa-user-group"></i>
  
         <div>{{ somd.name }}</div>
     </section>
@@ -79,14 +79,14 @@
 
             <div class="button_case">
                 {% if somd.admin.id == user.id %}
-                    <a class="body_button body_button2" href="{% url 'main:somd_members' somd.id %}">멤버관리</a>
-                    <a class="body_button body_button2" href="{% url 'main:somd_edit' somd.id %}">솜디수정</a>
+                    <a class="body_button green_button body_button2" href="{% url 'main:somd_members' somd.id %}">멤버관리</a>
+                    <a class="body_button green_button body_button2" href="{% url 'main:somd_edit' somd.id %}">솜디수정</a>
                 {% endif %}
 
                 {% if user in somd.waitTojoin_members.all %}
-                <div class="body_button body_button1 white_button">가입대기중</div>
+                <div class="body_button  green_button body_button1 white_button">가입대기중</div>
                 {% elif not user in somd.join_members.all %}
-                    <a class="body_button body_button1" href="{% url 'main:join' somd.id %}">가입하기</a>
+                    <a class="body_button green_button body_button1" href="{% url 'main:join' somd.id %}">가입하기</a>
                 {% endif %}
             </div>
         </section>
@@ -241,10 +241,16 @@
             <div class="pagenation">
                 {% if page_obj.has_previous %}
                 <span><i class="fa-solid fa-angle-left" onClick="location.href='?page={{ page_obj.previous_page_number }}'"></i></span>
+                {%else%}
+                <span></span>
                 {% endif %}
+                
                 <span > &nbsp;{{ page_obj.number }}&nbsp; </span> 
+                
                 {% if page_obj.has_next %}
                 <span><i class="fa-solid fa-angle-right" onClick="location.href='?page={{ page_obj.next_page_number }}'"></i></span>
+                {%else%}
+                <span></span>
                 {% endif %}
             </div>
         </div>

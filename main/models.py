@@ -146,3 +146,4 @@ class Alram(models.Model):
 class UserAlram(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     alrams = models.ManyToManyField(Alram, related_name="alram", blank=True)
+    new = models.BooleanField(default=False)

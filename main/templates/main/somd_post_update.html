@@ -9,7 +9,7 @@
     <section class="mainTitle">
         <a href="{% url 'main:somd_post_view' post.id%}"><i class="fa-solid fa-chevron-left"></i></a>
         <!-- <i class="fa-solid fa-house"></i> -->
-        <div>{{ somd.name }}</div>
+        <div>글수정</div>
     </section>
 </section>
 
@@ -20,7 +20,7 @@
             <div class="mainForm">
                 <section class="joinForm">
                     <input type="text" id="is_secret" name="is_secret" value="0" style="display: none;">
-                    <input type="text" name="title" class="titleForm" value="{{ post.title }}">
+                    <input type="text" name="title" class="titleForm" value="{{ post.title }}" maxlength="24">
                     <textarea type="text" name="content" class="textForm">{{post.content}}</textarea>
                     <section class="textFormInnerBtn">
                         <button type="button" onclick="chooseImage()"><i class="far fa-image"></i></button><br>
