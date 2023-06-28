@@ -63,7 +63,7 @@ def signup(request):
             # messages.error(request, '비밀번호가 일치하지 않습니다.')
             return redirect('accounts:signup')
 
-        if User.objects.filter(Q(username=request.POST['username']) | Q(email=request.POST['email'])).exists():
+        if User.objects.filter(username=request.POST['username']).exists() | Profile.objects.filter(email=request.POST['email']).exists():
             messages.error(request, '이미 사용 중인 ID 또는 이메일입니다.')
             return redirect('accounts:signup')
 
