@@ -17,7 +17,7 @@
     <h2>동국대 소모임 네트워킹 서비스</h2>
 </div>
 
-<form action="{% url 'accounts:signup' %}" method="POST" onsubmit="return false;">
+<form action="{% url 'accounts:signup' %}" method="POST" onsubmit="return false;" enctype="multipart/form-data">
     {% csrf_token %}
     <section class="titleSection">
         <h3 class="title">회원가입을 위해 개인정보 입력해주세요!</h3>
@@ -115,7 +115,10 @@
                 <input class="input_text" type="text" name="email" required>
             </div>
 
-            <!-- <input class ="file" type ="file" accept="image/*" name ="certification"> -->
+            <div class="inputBlank">
+                <div class="label">동국대 인증</div>
+                <input  type ="file" accept="image/*" name ="certification">
+            </div>
         </div>
     </section>
 
